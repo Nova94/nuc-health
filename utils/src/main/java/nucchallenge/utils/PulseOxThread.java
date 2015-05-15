@@ -46,7 +46,7 @@ public class PulseOxThread implements Runnable {
                         if (data != null) {
 
                             /* 0 is pulse, 1 is ox */
-                            if ((data[0] != 0 && data[1] != 0) && (data[0] < 100)){
+                            if ((data[0] != 0 && data[1] != 0) && (data[1] < 100)){
                                 String insert = insertQuery.replaceFirst(PARSE_FIELD_VALUE, pid.toString() + ',' + data[1] + ',' + data[0]);
                                 psql.insert(insert);
                                 System.err.println(pid.get() + " " + data[0] + " " + data[1]);

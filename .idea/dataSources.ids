@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="SQLite -" uuid="87f80c8a-0311-4455-81ef-6e81e5a15d01">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="PostgreSQL - testdb@localhost" uuid="2ead2828-3573-4140-8295-cfe9a859637c">
+  <data-source name="PostgreSQL - testdb@localhost" uuid="24c49cb5-f43d-4042-b605-2ac78d4d09ea">
     <database-info product="PostgreSQL" version="9.3.6" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
@@ -1530,6 +1527,13 @@
       <column name="viewowner" sqlType="name" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="definition" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
     </table>
+    <table name="bloodpressure" schema="public" catalog="testdb" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sys" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dia" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pulse" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="daterecorded" sqlType="timestamptz" precision="35" scale="6" nullable="true" jdbcType="93" def="bm93KCk="/>
+    </table>
     <table name="eeg" schema="public" catalog="testdb" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="af3" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
@@ -1547,10 +1551,26 @@
       <column name="f8" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
       <column name="af4" sqlType="float8" precision="17" scale="17" nullable="true" jdbcType="8"/>
     </table>
+    <table name="illness_codes" schema="public" catalog="testdb" type="TABLE">
+      <column name="codeid" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="codename" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="patient_codes" schema="public" catalog="testdb" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="codeid" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+    </table>
     <table name="patients" schema="public" catalog="testdb" type="TABLE">
-      <column name="id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="name" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
-      <column name="codes" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="bpchar" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="age" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="patients_pkey" columns="id"/>
+    </table>
+    <table name="pulseox" schema="public" catalog="testdb" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="oxygen" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pulse" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="timerecorded" sqlType="timestamptz" precision="35" scale="6" nullable="false" jdbcType="93" def="bm93KCk="/>
     </table>
     <procedure name="RI_FKey_cascade_del" schema="pg_catalog" catalog="testdb" type="2" remarks="cmVmZXJlbnRpYWwgaW50ZWdyaXR5IE9OIERFTEVURSBDQVNDQURF">
       <prototype>
